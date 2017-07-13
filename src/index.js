@@ -36,6 +36,7 @@ import ProgressIndicator from './components/progress-indicator/progress-indicato
 import FloatingMenu from './components/floating-menu/floating-menu';
 import StructuredList from './components/structured-list/structured-list';
 import Slider from './components/slider/slider';
+import Carousel from './components/carousel/carousel';
 
 const settings = {};
 
@@ -201,6 +202,11 @@ export {
    * @type Slider
    */
   Slider,
+  /**
+   * Carousel.
+   * @type Carousel
+   */
+  Carousel,
 };
 
 /**
@@ -242,6 +248,7 @@ const init = () => {
     StructuredList.init();
     DatePicker.init();
     Slider.init();
+    Carousel.init();
     // Floating menu instances are created by Tooltip, etc. and thus not for automatic instantiation
   }
 };
