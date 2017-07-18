@@ -13,10 +13,13 @@ class Carousel extends mixin(createComponent, initComponentBySearch) {
    */
   constructor(element, options) {
     super(element, options);
-    this.carouselBtn = this.element.querySelector(this.options.selectorCarouselBtn);
     this.filmstrip = this.element.querySelector(this.options.selectorFilmstrip);
+    this.carouselBtn = this.element.querySelector(this.options.selectorCarouselBtn);
+    this.carouselItem = this.element.querySelector(this.options.selectorCarouselItem);
+
     this.carouselBtn.addEventListener('click', (evt) => {
-       this.filmstrip.style.transform = 'translateX(-33%)';
+      const itemWidth = this.carouselItem.getBoundingClientRect().width;
+      this.filmstrip.style.transform = `translateX(-${itemWidth}px)`;
     });
   }
 
