@@ -14,18 +14,41 @@ class Carousel extends mixin(createComponent, initComponentBySearch) {
   constructor(element, options) {
     super(element, options);
     this.filmstrip = this.element.querySelector(this.options.selectorFilmstrip);
-    this.carouselBtn = this.element.querySelector(this.options.selectorCarouselBtn);
     this.carouselItem = this.element.querySelector(this.options.selectorCarouselItem);
 
-    this.carouselBtn.addEventListener('click', (evt) => {
-      const itemWidth = this.carouselItem.getBoundingClientRect().width;
-      this.filmstrip.style.transform = `translateX(-${itemWidth}px)`;
+    this.element.addEventListener('click', (evt) => {
+      if (evt.target.matches(this.options.selectorScrollRight)) {
+        this.sideScroll('right')
+      }
+      if (evt.target.matches(this.options.selectorScrollLeft)) {
+        this.sideScroll('left')
+      }
     });
+  }
+
+  sideScroll = (direction) => {
+    const filmstripWidth = this.filmstrip.getBoundingClientRect().width;
+    const itemWidth = this.carouselItem.getBoundingClientRect().width + this.carouselItem.style.marginRight;
+    const re = /\.*translateX\((.*)px\)/i;
+    const translateXValue = this.filmstrip.style.transform ? Number(this.filmstrip.style.transform.split(re)[1]) : 0;
+    direction = direction === 'right' ? -1 : 1;
+    let newTranslateValue = (itemWidth * direction) + translateXValue;
+    console.log(newTranslateValue)
+    if (newTranslateValue > 0) {
+      console.log('hi')
+      newTranslateValue = 0;
+    }
+    if (newTranslateValue < filmstripWidth * -1) {
+      newTranslateValue = filmstripWidth * -1;
+    }
+    this.filmstrip.style.transform = `translateX(${newTranslateValue}px)`;
   }
 
   static options = {
     selectorInit: '[data-carousel]',
     selectorFilmstrip: '.bx--carousel-filmstrip',
+    selectorScrollRight: '[data-scroll-right',
+    selectorScrollLeft: '[data-scroll-left]',
     selectorCarouselBtn: '.bx--carousel__btn',
     selectorCarouselItem: '.bx--carousel__item',
   };

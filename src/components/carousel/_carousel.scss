@@ -7,16 +7,32 @@
 
 @include exports('carousel') {
     .bx--carousel {
+        display: flex;
+        align-items: center;
+    }
+    .bx--carousel-container {
         max-width: rem(600px);
         overflow: hidden;
     }
     .bx--carousel-filmstrip {
         display: flex;
         justify-content: space-between;
-        position: relative;
         transition: transform 100ms $bx--ease-in; 
+        padding: rem(24px) 0;
     }
     .bx--carousel__btn {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+
+        &:last-of-type {
+            transform: rotate(180deg);
+        }
+
+        svg {
+            height: rem(24px);
+            fill: $brand-01;
+        }
     }
     .bx--carousel__item {
         margin-right: rem(20px);
