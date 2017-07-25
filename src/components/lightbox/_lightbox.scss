@@ -1,0 +1,41 @@
+@import '../../globals/scss/colors';
+@import '../../globals/scss/typography';
+@import '../../globals/scss/helper-mixins';
+@import '../../globals/scss/import-once';
+@import '../../globals/scss/css--reset';
+@import '../../globals/scss/css--typography';
+
+@include exports('lightbox') {
+  .bx--lightbox {
+    width: rem(1056px);
+    height: rem(594px);
+    position: relative;
+  }
+  .bx--lightbox__btn {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+
+    &:first-of-type {
+      left: rem(-32px);
+    }
+
+    &:last-of-type {
+      right: rem(-32px);
+      transform: rotate(180deg);
+    }
+
+    svg {
+      height: rem(24px);
+      fill: $ui-05;
+    }
+  }
+  .bx--lightbox__item {
+    display: none;
+  }
+  .bx--lightbox__item--shown {
+    display: block;
+  }
+}
