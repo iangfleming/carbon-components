@@ -11,6 +11,8 @@ class Lightbox extends mixin(createComponent, initComponentBySearch) {
   constructor(element, options) {
     super(element, options);
     this.activeIndex = this.element.dataset.lightboxIndex;
+    this.totalSlides = [...this.element.querySelectorAll(this.options.selectorLightboxItem)].length - 1;
+
     this.updateSlide();
 
     this.element.addEventListener('click', (evt) => {
@@ -18,7 +20,9 @@ class Lightbox extends mixin(createComponent, initComponentBySearch) {
     });
 
     this.element.parentNode.addEventListener('modal-beingshown', (evt) => {
-      console.log(evt)
+      if (!evt.detail.launchingElement.dataset.carouselItemIndex) {
+         throw new Error('launchingElement must have carouselItemIndex data attribute to indicated what item to display');
+      }
       this.activeIndex = evt.detail.launchingElement.dataset.carouselItemIndex;
       this.updateSlide();
     });
@@ -26,12 +30,16 @@ class Lightbox extends mixin(createComponent, initComponentBySearch) {
 
   handleClick = (evt) => {
       if (evt.target.matches(this.options.selectorScrollRight)) {
-        this.activeIndex++;
-        this.updateSlide();
+        if (this.activeIndex < this.totalSlides) {
+          this.activeIndex++;
+          this.updateSlide();
+        }
       }
       if (evt.target.matches(this.options.selectorScrollLeft)) {
-        this.activeIndex--;
-        this.updateSlide();
+        if (this.activeIndex > 0) {
+          this.activeIndex--;
+          this.updateSlide();
+        }
       }
   }
 

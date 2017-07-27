@@ -33,9 +33,7 @@ class Carousel extends mixin(createComponent, initComponentBySearch) {
     const translateXValue = this.filmstrip.style.transform ? Number(this.filmstrip.style.transform.split(re)[1]) : 0;
     direction = direction === 'right' ? -1 : 1;
     let newTranslateValue = (itemWidth * direction) + translateXValue;
-    console.log(newTranslateValue)
     if (newTranslateValue > 0) {
-      console.log('hi')
       newTranslateValue = 0;
     }
     if (newTranslateValue < filmstripWidth * -1) {
