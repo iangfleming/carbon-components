@@ -37,6 +37,7 @@ import FloatingMenu from './components/floating-menu/floating-menu';
 import StructuredList from './components/structured-list/structured-list';
 import Slider from './components/slider/slider';
 import Carousel from './components/carousel/carousel';
+import Lightbox from './components/lightbox/lightbox';
 
 const settings = {};
 
@@ -207,6 +208,11 @@ export {
    * @type Carousel
    */
   Carousel,
+  /**
+   * Lightbox.
+   * @type Lightbox
+   */
+  Lightbox,
 };
 
 /**
@@ -249,6 +255,7 @@ const init = () => {
     DatePicker.init();
     Slider.init();
     Carousel.init();
+    Lightbox.init();
     // Floating menu instances are created by Tooltip, etc. and thus not for automatic instantiation
   }
 };
