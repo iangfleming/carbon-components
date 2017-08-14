@@ -28,7 +28,7 @@ class Carousel extends mixin(createComponent, initComponentBySearch) {
 
   sideScroll = (direction) => {
     const filmstripWidth = this.filmstrip.getBoundingClientRect().width;
-    const itemWidth = this.carouselItem.getBoundingClientRect().width + this.carouselItem.style.marginRight;
+    const itemWidth = this.carouselItem.getBoundingClientRect().width + 20;
     const re = /\.*translateX\((.*)px\)/i;
     const translateXValue = this.filmstrip.style.transform ? Number(this.filmstrip.style.transform.split(re)[1]) : 0;
     direction = direction === 'right' ? -1 : 1;
@@ -44,7 +44,7 @@ class Carousel extends mixin(createComponent, initComponentBySearch) {
 
   static options = {
     selectorInit: '[data-carousel]',
-    selectorFilmstrip: '.bx--carousel-filmstrip',
+    selectorFilmstrip: '.bx--filmstrip',
     selectorScrollRight: '[data-scroll-right]',
     selectorScrollLeft: '[data-scroll-left]',
     selectorCarouselBtn: '.bx--carousel__btn',

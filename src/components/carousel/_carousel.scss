@@ -11,14 +11,32 @@
         align-items: center;
     }
     .bx--carousel-container {
-        max-width: rem(600px);
+        max-width: rem(808px);
         overflow: hidden;
     }
-    .bx--carousel-filmstrip {
+    .bx--filmstrip {
         display: flex;
         justify-content: space-between;
         transition: transform 100ms $bx--ease-in; 
         padding: rem(24px) 0;
+    }
+    .bx--filmstrip-indicator-ctn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .bx--filmstrip-indicator {
+        height: rem(10px);
+        width: rem(10px);
+        margin-bottom: 1rem;
+        margin-right: rem(5px);
+        margin-left: rem(5px);
+        border: 1px solid $brand-01;
+        background: transparent;
+        border-radius: 50%;
+    }
+    .bx--filmstrip-indicator--active {
+        background: $brand-01;
     }
     .bx--carousel__btn {
         border: 0;
@@ -37,5 +55,12 @@
     .bx--carousel__item {
         margin-right: rem(20px);
         cursor: pointer;
+
+        &:hover, &:focus {
+
+        }
+    }
+    .bx--carousel__item--active {
+        @include focus-outline();
     }
 }

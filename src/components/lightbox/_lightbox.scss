@@ -8,7 +8,11 @@
 @include exports('lightbox') {
   .bx--lightbox {
     width: rem(1056px);
-    height: rem(594px);
+    // height: rem(594px);
+    height: rem(786px);
+    @include layer('pop-out');
+  }
+  .bx--lightbox__main {
     position: relative;
   }
   .bx--lightbox__btn {
@@ -34,8 +38,14 @@
   }
   .bx--lightbox__item {
     display: none;
+    width: 100%;
   }
   .bx--lightbox__item--shown {
     display: block;
+  }
+
+  .bx--lightbox__footer {
+    background: $ui-01;
+    overflow: hidden;
   }
 }
