@@ -39,9 +39,12 @@
         background: $brand-01;
     }
     .bx--carousel__btn {
-        border: 0;
-        background: transparent;
+        @include button-reset(false);
         cursor: pointer;
+
+        &:focus {
+            @include focus-outline();
+        }
 
         &:last-of-type {
             transform: rotate(180deg);
@@ -53,11 +56,14 @@
         }
     }
     .bx--carousel__item {
+        @include button-reset;
+        padding: 0;
+        line-height: 0;
         margin-right: rem(20px);
         cursor: pointer;
 
         &:hover, &:focus {
-
+            @include focus-outline();
         }
     }
     .bx--carousel__item--active {

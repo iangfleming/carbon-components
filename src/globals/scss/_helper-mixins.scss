@@ -66,6 +66,16 @@
   white-space: nowrap;
 }
 
+@mixin button-reset($width: true) {
+  background: none;
+  appearance: none;
+  border: 0;
+
+  @if ($width == true) {
+    width: 100%;
+  }
+}
+
 //----------------------------------------------
 // Deprecated
 // ---------------------------------------------
