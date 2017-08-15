@@ -45,8 +45,9 @@ class Lightbox extends mixin(createComponent, initComponentBySearch) {
           this.updateFilmstrip();
         }
       }
-      if (evt.target.matches(this.options.selectorFilmstripItem)) {
-        this.activeIndex = evt.target.dataset.carouselItemIndex;
+      const filmstripItem = eventMatches(evt, this.options.selectorFilmstripItem);
+      if (filmstripItem) {
+        this.activeIndex = filmstripItem.dataset.carouselItemIndex;
         this.updateSlide();
         this.updateFilmstrip();
       }
